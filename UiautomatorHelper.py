@@ -552,7 +552,7 @@ class myApp(QMainWindow):
                     found_index = i
                     self.focus_index = i
             i += 1
-        print("found:",found_index)
+        # print("found:",found_index)
         self.draw_rect(found_index)
         self.setItemSelected(found_index)
 
@@ -562,10 +562,10 @@ class myApp(QMainWindow):
         if i is not None:
             self.mark.setVisible(True)
         else:
-            print('Not found item')
+            # print('Not found item')
             return
-        print(self.elements)
-        print(self.elements[i]['bounds'])
+        # print(self.elements)
+        # print(self.elements[i]['bounds'])
         bounds = self.elements[i]['bounds']
         left = int(bounds[bounds.find("[") + 1:bounds.find(",")])-2
         top = int(bounds[bounds.find(",") + 1:bounds.find("][")])-2
@@ -579,7 +579,7 @@ class myApp(QMainWindow):
             right = self.pic_w
         if bottom > self.pic_h:
             bottom = self.pic_h
-        print(left,right,top,bottom)
+        # print(left,right,top,bottom)
         self.mark.setFrameShape(QFrame.Box)
         self.mark.setGeometry(left / self.rate, top / self.rate, right / self.rate - left / self.rate, bottom / self.rate - top / self.rate)
         self.mark.setLineWidth(2)
@@ -814,7 +814,7 @@ class myApp(QMainWindow):
         # Get fullIndexXpath
         for i in range(len(self.item_list)):
             item = self.item_list[i]
-            print(item.text(1),item.text(0))
+            # print(item.text(1),item.text(0))
             xp = []
             idx = []
             while (item is not None):
@@ -825,11 +825,11 @@ class myApp(QMainWindow):
             self.elements[i]['fullIndexXpath'] = "/"
             xp.pop()
             idx.pop()
-            print(xp,idx)
+            # print(xp,idx)
             j = int(xp[0])
             while (len(xp) > 0):
                 k = int(xp.pop())
-                print(k)
+                # print(k)
                 x = idx.pop()
                 v = x[1:x.find(")")]
                 v = int(v) + 1
@@ -838,16 +838,11 @@ class myApp(QMainWindow):
 
     def itemClick(self, item):
         """Table Widget item click event"""
-        try:
-            i = int(item.text(1))
-            print("index ", i)
-            print("text ", item.text(0))
-            self.focus_index = i
-            self.draw_rect(i)
-
-        except Exception as e:
-            print(e)
-            print(traceback.format_exc())
+        i = int(item.text(1))
+        # print("index ", i)
+        # print("text ", item.text(0))
+        self.focus_index = i
+        self.draw_rect(i)
 
     def pre_node(self):
         """Switch to previous node/element"""
