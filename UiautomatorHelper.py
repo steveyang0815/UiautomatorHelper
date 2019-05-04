@@ -508,7 +508,7 @@ class myApp(QMainWindow):
                         ele['xpath'] = '//' + ele['class'] + '[@text=\"{}\" and @content-desc=\"{}\"]'.format(
                             ele['text'],ele['content-desc'])
                     if len(ele['text']) > 0 and len(ele['content-desc']) == 0:
-                        ele['xpath'] = '//' + ele['class'] + '[@text=\"{}\]"'.format(ele['text'])
+                        ele['xpath'] = '//' + ele['class'] + '[@text=\"{}\"]'.format(ele['text'])
                     if len(ele['text']) == 0 and len(ele['content-desc']) > 0:
                         ele['xpath'] = '//' + ele['class'] + '[@content-desc=\"{}\"]'.format(ele['content-desc'])
 
