@@ -632,6 +632,8 @@ class myApp(QMainWindow):
         self.eles = []
         self.item_list = []
         i = 0
+        self.top = [] # Save top node class
+		self.topn = {} # Save top node index
         # Get nodes information
         for line in self.uix.split("\n"):
             if line.find("<node ") != -1:
@@ -647,6 +649,10 @@ class myApp(QMainWindow):
                 self.eles.append([i, line.find("<node ")/2, "(" + self.elements[i]['index']+") "+ \
                              self.elements[i]['class'].split("android.widget.")[-1] + sp + self.elements[i]['text'] + \
                                   cd + " " + self.elements[i]['bounds']])
+                if line.find("<node ")/2 == 1: # Top node				
+					self.top.append(self.elements[i]['class'])
+					c = self.top.count(self.elements[i]['class'])
+					self.topn[str(i)] = str(c) # Add top node index
                 i+=1
 
         # Add nodes to tree
@@ -827,6 +833,9 @@ class myApp(QMainWindow):
             idx.pop()
             # print(xp,idx)
             j = int(xp[0])
+            k = int(xp.pop())
+            v = self.topn[str(k)]  # Get the top node index
+            self.elements[j]['fullIndexXpath'] = self.elements[j]['fullIndexXpath'] + "/" + self.elements[k]['class'] + "[" + v + "]"
             while (len(xp) > 0):
                 k = int(xp.pop())
                 # print(k)
