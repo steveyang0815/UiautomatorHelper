@@ -618,7 +618,10 @@ class myApp(QMainWindow):
                     self.model.setItem(row, column, item)
         self.props.setModel(self.model)
         for k in range(len(self.prolist)):
-            self.props.setRowHeight(k, 3)
+	    if k != len(self.prolist) - 3:
+                self.props.setRowHeight(k, 3)
+	    else:
+		self.props.setRowHeight(k, 50)
         self.props.update()
 
 
