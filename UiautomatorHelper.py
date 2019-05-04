@@ -653,9 +653,9 @@ class myApp(QMainWindow):
                              self.elements[i]['class'].split("android.widget.")[-1] + sp + self.elements[i]['text'] + \
                                   cd + " " + self.elements[i]['bounds']])
                 if line.find("<node ")/2 == 1: # Top node				
-					self.top.append(self.elements[i]['class'])
-					c = self.top.count(self.elements[i]['class'])
-					self.topn[str(i)] = str(c) # Add top node index
+                    self.top.append(self.elements[i]['class'])
+                    c = self.top.count(self.elements[i]['class'])
+                    self.topn[str(i)] = str(c) # Add top node index
                 i+=1
 
         # Add nodes to tree
