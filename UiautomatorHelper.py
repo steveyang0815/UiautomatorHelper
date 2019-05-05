@@ -446,7 +446,7 @@ class myApp(QMainWindow):
                 for item in t:
                     p = item.split("=")
                     k = p[0]
-                    v = p[1].strip('"')
+                    v = p[1].strip('"').replace("&amp;","&") 
                     d[k] = v  # Add element's properties to dict
                 d['xpath'] = ""
                 d['fullIndexXpath'] = ""
