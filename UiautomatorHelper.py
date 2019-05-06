@@ -850,7 +850,10 @@ class myApp(QMainWindow):
 
     def itemClick(self, item):
         """Table Widget item click event"""
-        i = int(item.text(1))
+        if item not in self.item_list:
+            return  # root item
+	
+	i = int(item.text(1))
         # print("index ", i)
         # print("text ", item.text(0))
         self.focus_index = i
